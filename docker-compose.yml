@@ -1,0 +1,10 @@
+services:
+  osrm:
+    image: ghcr.io/project-osrm/osrm-backend
+    container_name: auckland-osrm
+    command: osrm-routed --algorithm mld /data/new-zealand-latest.osrm
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./osrm-data:/data
+    restart: unless-stopped
